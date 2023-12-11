@@ -4,27 +4,33 @@ import React from "react";
 import chartUp from "../../assets/chart-up.svg";
 import charDown from "../../assets/chart-down.svg";
 
-const TableCoin = ({ coins }) => {
+import { RotatingLines } from "react-loader-spinner";
+
+const TableCoin = ({ coins, isLoading }) => {
   return (
     <div>
-      <table>
-        <thead>
-          <tr>
-            <th>Coin</th>
-            <th>Name</th>
-            <th>Price</th>
-            <th>24h</th>
-            <th>Total Vlume</th>
-            <th></th>
-          </tr>
-        </thead>
+      {isLoading ? (
+        <RotatingLines strokeColor="#3874ff" strokeWidth="2" />
+      ) : (
+        <table>
+          <thead>
+            <tr>
+              <th>Coin</th>
+              <th>Name</th>
+              <th>Price</th>
+              <th>24h</th>
+              <th>Total Vlume</th>
+              <th></th>
+            </tr>
+          </thead>
 
-        <tbody>
-          {coins.map((coin) => (
-            <TableRow key={coin.id} coin={coin} />
-          ))}
-        </tbody>
-      </table>
+          <tbody>
+            {coins.map((coin) => (
+              <TableRow key={coin.id} coin={coin} />
+            ))}
+          </tbody>
+        </table>
+      )}
     </div>
   );
 };
@@ -49,7 +55,7 @@ const TableRow = ({
           <span>{symbol.toUpperCase()}</span>
         </div>
       </td>
-      
+
       <td>{name}</td>
       <td>{current_price.toLocaleString()}</td>
       <td>{price_change.toFixed(2)}%</td>
