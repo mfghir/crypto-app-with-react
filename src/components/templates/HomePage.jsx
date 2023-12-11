@@ -1,3 +1,6 @@
+/* eslint-disable no-unused-vars */
+import React from 'react'
+
 import { useEffect, useState } from "react";
 import TableCoin from "../modules/TableCoin";
 import { getCoinList } from "../../services/cryptoApi";
