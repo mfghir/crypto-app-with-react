@@ -4,6 +4,8 @@ import React, { useEffect, useState } from "react";
 import { searchCoin } from "../../services/cryptoApi";
 import { RotatingLines } from "react-loader-spinner";
 
+import styles from "./Search.module.css";
+
 const Search = ({ currency, setCurrency }) => {
   const [text, setText] = useState("");
   const [coins, setCoins] = useState([]);
@@ -43,7 +45,7 @@ const Search = ({ currency, setCurrency }) => {
   }, [text]);
 
   return (
-    <div>
+    <div className={styles.searchBox}>
       <input
         type="text"
         value={text}
@@ -55,7 +57,7 @@ const Search = ({ currency, setCurrency }) => {
         <option value="jpy">JPY</option>
       </select>
 
-      <div>
+      <div className={styles.searchResult}>
         {isLoading && (
           <RotatingLines
             width="50px"
