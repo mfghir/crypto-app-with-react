@@ -6,6 +6,7 @@ import charDown from "../../assets/chart-down.svg";
 
 import { RotatingLines } from "react-loader-spinner";
 import styles from "./TableCoin.module.css";
+import { marketChart } from "../../services/cryptoApi";
 
 const TableCoin = ({ coins, isLoading, currency, setChart }) => {
   return (
@@ -45,6 +46,7 @@ export default TableCoin;
 
 const TableRow = ({
   coin: {
+    id,
     name,
     image,
     symbol,
@@ -55,7 +57,13 @@ const TableRow = ({
   currency,
   setChart,
 }) => {
-  const showHandler = () => {
+  const showHandler = async () => {
+    try {
+      const res = await fetch(marketChart(id));
+      const json = await res.json();
+    } catch (error) {
+      console.log(error);
+    }
     setChart(true);
   };
 
