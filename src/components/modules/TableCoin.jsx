@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import React from "react";
@@ -44,8 +45,8 @@ const TableCoin = ({ coins, isLoading, currency, setChart }) => {
 
 export default TableCoin;
 
-const TableRow = ({
-  coin: {
+const TableRow = ({ currency, setChart }) => {
+  const {
     id,
     name,
     image,
@@ -53,14 +54,13 @@ const TableRow = ({
     current_price,
     price_change_percentage_24h: price_change,
     total_volume,
-  },
-  currency,
-  setChart,
-}) => {
+  } = coin;
+
   const showHandler = async () => {
     try {
       const res = await fetch(marketChart(id));
       const json = await res.json();
+      setChart({ ...json, coin });
     } catch (error) {
       console.log(error);
     }
