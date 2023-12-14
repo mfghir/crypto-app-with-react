@@ -45,7 +45,7 @@ const TableCoin = ({ coins, isLoading, currency, setChart }) => {
 
 export default TableCoin;
 
-const TableRow = ({ currency, setChart }) => {
+const TableRow = ({ currency, coin, setChart }) => {
   const {
     id,
     name,
@@ -62,9 +62,8 @@ const TableRow = ({ currency, setChart }) => {
       const json = await res.json();
       setChart({ ...json, coin });
     } catch (error) {
-      console.log(error);
+      setChart(null);
     }
-    setChart(true);
   };
 
   return (

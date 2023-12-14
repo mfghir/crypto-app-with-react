@@ -1,11 +1,14 @@
 /* eslint-disable no-unused-vars */
-import React from 'react'
+import React from "react";
 import HomePage from "./components/templates/HomePage";
+import Layout from "./layout/Layout";
 
 function App() {
   return (
     <>
-      <HomePage />
+      <Layout>
+        <HomePage />
+      </Layout>
     </>
   );
 }

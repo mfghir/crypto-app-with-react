@@ -3,11 +3,12 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { getCoinList } from "../../services/cryptoApi";
 
-import TableCoin from "../modules/TableCoin";
+// import TableCoin from "../modules/TableCoin";
 import Pagination from "../modules/Pagination";
 import Search from "../modules/Search";
 
 import Chart from "../modules/Chart";
+import TableCoin from "../modules/Tablecoin";
 
 const HomePage = () => {
   const [page, setPage] = useState(1);
